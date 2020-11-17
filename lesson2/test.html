@@ -1,0 +1,22 @@
+<script>
+
+function runningSumOfArray(nums){
+    
+    return nums.map((item, index) => {
+        if(index == 0){
+            return item;
+        }
+        let total = 0;
+        for(let i = 0; i <= index; i++){
+            total += nums[i];
+        }
+
+        return total;
+        
+    })
+
+}
+
+let newArr = runningSumOfArray([1,2,3]);
+console.log(newArr);
+</script>

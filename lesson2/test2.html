@@ -1,0 +1,19 @@
+<script>
+
+    let name = " Vu mInh ";
+    let words = name.trim().split(' ');
+    let convertWords = [];
+    words.forEach(item => {
+        let loopWord = "";
+        for(let i = 0; i < item.length; i++){
+            if(i == 0){
+                loopWord += item[i].toUpperCase();
+                continue;
+            }
+            loopWord += item[i].toLowerCase();
+        }
+        convertWords.push(loopWord)
+    });
+    console.log(convertWords.join(" "));
+    
+</script>

@@ -1,0 +1,59 @@
+<script>
+    let  matrix = [
+    [3, 5, 7, 7, 10], [4, 5, 6, 9, 10], [2, 2, 4, 9, 10], [2, 2, 3, 10, 10]
+    ];
+    let target = 10;
+
+    function searchMatrix(matrix, target){
+        let correctIncreaseRowCheck = true;
+        matrix.forEach(row => {
+            tmpRow = [...row];
+            tmpRow.sort(function(a, b){return a-b});
+            for(let i = 0; i < row.length; i++){
+                if(row[i] != tmpRow[i]){
+                    correctIncreaseRowCheck = false;
+                    break;
+                }
+            }
+        });
+        if(!correctIncreaseRowCheck){
+            return false;
+        }
+        
+
+        let condition2 = [];
+        
+        // tìm đc hàng nào chứa target 
+        matrix.forEach((row, index) => {
+            
+            let found = row.indexOf(target);
+            debugger;
+            if(found == -1){
+                condition2[index] = true;
+                
+            }else{
+                
+                if(index == 0){
+                    condition2[index] = true;
+                    return false;
+                }
+                if(index > 0 && row[0] < matrix[index-1][matrix.length-1]){
+                    condition2[index] = false;
+                }else{
+                    condition2[index] = true;
+                }
+            }
+        });
+
+        let result = true;
+        for(let i = 0; i < condition2.length; i++){
+            if(condition2[i] == false){
+                result = false;
+            }
+        }
+        console.log(condition2);
+        return result;
+
+    }
+    console.log(searchMatrix(matrix, target));
+</script>
