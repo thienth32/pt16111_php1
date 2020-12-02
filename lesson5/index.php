@@ -32,6 +32,10 @@ $cates = $stmt->fetchAll();
                 <td><?= $value['id'] ?></td>
                 <td><?= $value['name'] ?></td>
                 <td><?= $value['slug'] ?></td>
+                <td>
+                    <a href="edit.php?id=<?= $value['id']?>">Sửa</a>
+                    <a href="remove.php?id=<?= $value['id']?>">Xóa</a>
+                </td>
             </tr>
         <?php endforeach ?>
     </tbody>
