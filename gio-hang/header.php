@@ -6,10 +6,13 @@ if(!isset($_SESSION['cart'])){
 
 
 $cart = $_SESSION['cart'];
-$total = 0;
+$totalPrice = 0;
 $totalItem = 0;
 if(count($cart) > 0){
-
+    foreach ($cart as $key => $value) {
+        $totalItem += $value['quantity'];
+        $totalPrice += $value['quantity']*$value['price'];
+    }
 }
 
 ?>
@@ -32,11 +35,17 @@ if(count($cart) > 0){
           Giỏ hàng (<?= $totalItem?>) sp
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+            <?php foreach( $cart as $item):?>
+                <a class="dropdown-item" href="#">
+                    <p>
+                        <strong><?= $item['name']?></strong>
+                        - <?= $item['quantity']?>
+                        - $<?= $item['quantity']*$item['price'] ?>
+                    </p>
+                </a>
+            <?php endforeach?>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Tổng: $<?= $totalPrice ?></a>
         </div>
       </li>
     </ul>
