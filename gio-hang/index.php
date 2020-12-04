@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 #lấy danh sách các quyển sách
 require_once './db.php';
@@ -22,16 +23,21 @@ $books = $stmt->fetchAll();
 <body>
     <div class="container-fluid">
         <div class="row">
+            <?php foreach($books as $item):?>
             <div class="col-3">
-                <div class="card" style="width: 100%;">
-                    <img src="..." class="card-img-top" alt="...">
+                <div class="card" style="width: 100%; margin-bottom: 10px;">
+                    <img src="<?= $item['feature_image']?>" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h6 class="card-title"><?= $item['name'] ?></h6>
+                        <p class="card-text">Gía: 
+                            <?= number_format($item['price'], 0, '.', ',') ?>
+                        </p>
+                        <a href="add-to-cart.php?id=<?=$item['id']?>" 
+                                class="btn btn-warning">Thêm giỏ hàng</a>
                     </div>
                 </div>
             </div>
+            <?php endforeach ?>
         </div>
     </div>
     
