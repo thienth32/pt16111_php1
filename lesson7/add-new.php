@@ -34,6 +34,9 @@ $cates = executeQuery($getListCateQuery);
                 <div class="form-group">
                     <label for="">Tên sách</label>
                     <input type="text" name="name" class="form-control">
+                    <?php if(isset($_GET['name-err'])): ?>
+                        <span class="text-danger"><?= $_GET['name-err'] ?></span>
+                    <?php endif ?>
                 </div>
                 <div class="form-group">
                     <label for="">Danh mục</label>
@@ -48,13 +51,19 @@ $cates = executeQuery($getListCateQuery);
                 </div>
                 <div class="form-group">
                     <label for="">Giá</label>
-                    <input type="number" name="price" class="form-control">
+                    <input type="text" name="price" class="form-control">
+                    <?php if(isset($_GET['price-err'])): ?>
+                        <span class="text-danger"><?= $_GET['price-err'] ?></span>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Ảnh</label>
                     <input type="file" name="image" class="form-control">
+                    <?php if(isset($_GET['image-err'])): ?>
+                        <span class="text-danger"><?= $_GET['image-err'] ?></span>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
