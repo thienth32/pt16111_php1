@@ -24,7 +24,7 @@ if($name == "" ){
 
 if($price <= 0){
     $errors .= "&price-err=Giá không hợp lệ";
-}else if($price !== ceil($price)){
+}else if($price != ceil($price)){
     $errors .= "&price-err=Giá phải là số nguyên";
 }
 

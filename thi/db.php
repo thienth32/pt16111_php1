@@ -6,8 +6,7 @@ const DB_USER_NAME = 'root';
 // nếu dùng xampp thì để chuỗi rỗng
 const DB_PASSWORD = '123456'; 
 
-
-
+const BASE_URL = "http://localhost/pt16111-web/thi/";
 const IMG_EXTENSIONS_ARRAY = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
 function getConnect(){
     $connect = new PDO("mysql:host=" . HOST_NAME 
